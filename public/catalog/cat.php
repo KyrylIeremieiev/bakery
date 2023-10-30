@@ -1,7 +1,8 @@
 <?php
 require_once('../../db/config.php');
 require_once('../function/functions.php');
-$con = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+$conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
+
 
 // Example usage to generate and store a slug in your database
 $title = "Your Item Title";
@@ -19,23 +20,22 @@ $link = ["http://localhost:8080/cake1", "http://localhost:8080/cake2", "http://l
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <link rel="stylesheet" href="../index.css">
 </head>
-<body style="display:flex; gap:2rem;">]
-    <article>
-        <?php
-            echo '<img src="' . $img[0] . '"></img><h2>' . $title[0] . '</h2><a href="' . $link[0] . '">Go To Page</a>';
-        ?>
-    </article>
-    <article>
-        <?php
-            echo '<img src="' . $img[1] . '"></img><h2>' . $title[1] . '</h2><a href="' . $link[1] . '">Go To Page</a>';
-        ?>
-    </article>
-    <article>
-        <?php
-            echo '<img src="' . $img[2] . '"></img><h2>' . $title[2] . '</h2><a href="' . $link[2] . '">Go To Page</a>';
-        ?>
-    </article>
+<body style="display:flex; gap:2rem;">
+    <?php
+    $sql = "SELECT * FROM mainPage";
+    $result = $conn->query($sql);
+    
+    if ($result->num_rows > 0) {
+      // output data of each row
+      while($row = $result->fetch_assoc()) {
+        echo '<article><img src="' . $row["img"] . '"></img><h2>' .  $row["title"] . '</h2><a href="' .  $row["url"] . '">Go To Page</a></article>';
+      }
+    } else {
+      echo "0 results";
+    }
+    ?>
     <p></p>
 </body>
 </html>

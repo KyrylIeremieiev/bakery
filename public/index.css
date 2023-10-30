@@ -1,0 +1,14 @@
+body{
+    display: flex;
+    justify-content: center;
+}
+
+article{
+    border: 1px solid gray;
+    padding: 1rem;
+}
+img{
+    height: 10rem;
+    width: 10rem;
+    object-fit: cover;
+}
