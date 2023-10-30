@@ -8,7 +8,6 @@ article{
     padding: 1rem;
 }
 img{
-    height: 10rem;
-    width: 10rem;
+    width: 100%;
     object-fit: cover;
 }

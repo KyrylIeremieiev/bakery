@@ -2,16 +2,6 @@
 require_once('../../db/config.php');
 require_once('../function/functions.php');
 $conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
-
-
-// Example usage to generate and store a slug in your database
-$title = "Your Item Title";
-$slug = generateSlug($title);
-/* 
-echo $slug; */
-$img = ['..', '.1', '.2'];
-$title = ['myTitle', 'nah', 'this'];
-$link = ["http://localhost:8080/cake1", "http://localhost:8080/cake2", "http://localhost:8080/cake3"];
 ?>
 
 <!DOCTYPE html>
