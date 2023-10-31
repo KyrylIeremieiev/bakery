@@ -1,16 +1,17 @@
 <?php
-
 require_once('../db/config.php');
 require_once('./function/functions.php');
+
 $conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
 $url = 'http://' . $_SERVER['SERVER_NAME'] . $_SERVER['REQUEST_URI'];
-if(str_contains($url, 'cake3')){
-    $sql = "SELECT * FROM cake where title = 'medovik'";
-}if(str_contains($url, 'cake1')){
-    $sql = "SELECT * FROM cake where title = 'choco'";
-}if(str_contains($url, 'cake2')){
-    $sql = "SELECT * FROM cake where title = 'tiramisu'";
+$requestUri = $_SERVER['REQUEST_URI'];
+$urlPath = parse_url($requestUri, PHP_URL_PATH);
+$urlPath = generateSlug($urlPath);
+if ($urlPath === '/' || $urlPath === '') {
+    header("Location: http://localhost:8080/catalog/cat.php");
+    exit();
 }
+$sql = "SELECT * FROM cake where url = '" . $urlPath . "';";
 
 ?>
 

@@ -1,7 +1,10 @@
 <?php
-function generateSlug($string) {
-    $string = strtolower($string);
-    $string = str_replace(' ', '-', $string);
-    $string = preg_replace('/[^a-z0-9\-]/', '', $string);
-    return $string;
+function generateSlug($text) {
+    // Replace spaces with dashes
+    $text = str_replace(" ", "-", $text);
+    // Remove special characters
+    $text = preg_replace('/[^A-Za-z0-9\-]/', '', $text);
+    // Convert to lowercase
+    $text = strtolower($text);
+    return $text;
 }

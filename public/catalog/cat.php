@@ -20,7 +20,7 @@ $conn = new mysqli(DB_HOST, DB_USERNAME, DB_PASSWORD, DB_NAME);
     if ($result->num_rows > 0) {
       // output data of each row
       while($row = $result->fetch_assoc()) {
-        echo '<article><img src="' . $row["img"] . '"></img><h2>' .  $row["title"] . '</h2><a href="' .  $row["url"] . '">Go To Page</a></article>';
+        echo '<article><img src="' . $row["img"] . '"></img><h2>' .  $row["title"] . '</h2><a href="http://localhost:8080/' . $row['url']  . '">Go To Page</a></article>';
       }
     } else {
       echo "0 results";
